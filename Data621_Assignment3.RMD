@@ -1,0 +1,30 @@
+---
+title: "Data621 Assignment3"
+author: "Ritesh Lohiya"
+date: "June 30, 2018"
+output: html_document
+---
+
+install.packages('ROCR')
+
+```{r}
+library(readr)
+library(kableExtra)
+library(tidyverse)
+library(knitr)
+library(psych)
+library(gridExtra)
+library(usdm)
+library(mice)
+library(ggiraph)
+library(cowplot)
+library(reshape2)
+library(corrgram)
+library(caTools)
+library(caret)
+library(ROCR)
+library(pROC)
+library(reshape2)
+
+```
+
