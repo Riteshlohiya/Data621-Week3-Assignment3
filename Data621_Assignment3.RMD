@@ -578,6 +578,9 @@ crime_eval$predict_target <- ifelse(crime_eval$predict_prob >= 0.50, 1,0)
 write.csv(crime_eval,"Evaluation_Data.csv", row.names=FALSE)
 ```
 
+The Predicted Evaluation data is present at https://github.com/Riteshlohiya/Data621-Week3-Assignment3/blob/master/Evaluation_Data.csv
+
+
 
 
 
