@@ -80,9 +80,9 @@ missmap(crime_train, main = "Missing values vs observed",  color='dodgerblue')
 
 There are no missing values in the dataset.
 
-Lets now dig into our response variables.
+Lets now dig into available variables.
 
-1.	Response Variable zn - proportion of residential land zoned for large lots (over 25000 square feet). We can see there are more zeros values for zn and also has positive skewness. Also there appears to be relationship between crime rates and zn.
+1. zn - proportion of residential land zoned for large lots (over 25000 square feet). We can see there are more zeros values for zn and also has positive skewness. Also there appears to be relationship between crime rates and zn.
 
 ```{r}
 with(crime_train, c(summary(zn), SD=sd(zn), Skew=skewness(zn), Kurt=kurtosis(zn)))
@@ -104,7 +104,7 @@ box_target <- ggplot(crime_train, aes(x=factor(target), zn)) + geom_boxplot(fill
 grid.arrange(hist, qq_plot, box_plot, box_target, ncol=2)
 ```
 
-2.	Response Variable: indus - proportion of non-retail business acres per suburb. The histogram below indicates a bi-modal quality to the variable’s distribution, with many values clustering in two ranges.
+2. indus - proportion of non-retail business acres per suburb. The histogram below indicates a bi-modal quality to the variable’s distribution, with many values clustering in two ranges.
 
 ```{r}
 with(crime_train, c(summary(indus), SD=sd(indus), Skew=skewness(indus), Kurt=kurtosis(indus)))
@@ -126,7 +126,7 @@ box_target <- ggplot(crime_train, aes(x=factor(target), indus)) + geom_boxplot(f
 grid.arrange(hist, qq_plot, box_plot, box_target, ncol=2)
 ```
 
-3.	Response Variable: chas - a dummy var. for whether the suburb borders the Charles River (1) or not (0). This variable tells us if the neighborhood borders the Charles River (1) or not (0). Close to 7% of the neighborhood borders the Charles River. Of the areas bordering the Charles river 21 are in high crime areas.
+3. chas - a dummy var. for whether the suburb borders the Charles River (1) or not (0). This variable tells us if the neighborhood borders the Charles River (1) or not (0). Close to 7% of the neighborhood borders the Charles River. Of the areas bordering the Charles river 21 are in high crime areas.
 
 ```{r}
 addmargins(table(crime_train$chas))
@@ -138,7 +138,7 @@ ggplot(crime_train, aes(x=target, y=chas)) + geom_jitter(color='seagreen4') + th
   labs(title ='Jittered Scatter Plot of chas vs.target') + theme(plot.title = element_text(hjust = 0.5)) 
 ```
 
-4.	Response Variable: nox - nitrogen oxides concentration (parts per 10 million). The variable nox represents the concentration of nitrogen oxide in each Boston area. There is also positive skewness. We also see moderately higher nox variance in high crime areas.
+4. nox - nitrogen oxides concentration (parts per 10 million). The variable nox represents the concentration of nitrogen oxide in each Boston area. There is also positive skewness. We also see moderately higher nox variance in high crime areas.
 
 ```{r}
 with(crime_train, c(summary(nox), SD=sd(nox), Skew=skewness(nox), Kurt=kurtosis(nox)))
@@ -160,7 +160,7 @@ box_target <- ggplot(crime_train, aes(x=factor(target), nox)) + geom_boxplot(fil
 grid.arrange(hist, qq_plot, box_plot, box_target, ncol=2)
 ```
 
-5. Response Variable: rm -  average number of rooms per dwelling. The predictor rm   is count measure describing the average number of rooms per dwelling. The distridution has heavy tail and has bell curve.
+5. rm -  average number of rooms per dwelling. The predictor rm   is count measure describing the average number of rooms per dwelling. The distridution has heavy tail and has bell curve.
 
 ```{r}
 with(crime_train, c(summary(rm), SD=sd(rm), Skew=skewness(rm), Kurt=kurtosis(rm)))
@@ -182,7 +182,7 @@ box_target <- ggplot(crime_train, aes(x=factor(target), rm)) + geom_boxplot(fill
 grid.arrange(hist, qq_plot, box_plot, box_target, ncol=2)
 ```
 
-6.	Response Variable: age - proportion of owner-occupied units built prior to 1940. The variable age indicates the proportion of owner occupied units built prior to 1940. This variable has high left skewness. Also there is significantly higher mean percentage of older homes in high crime areas.
+6. age - proportion of owner-occupied units built prior to 1940. The variable age indicates the proportion of owner occupied units built prior to 1940. This variable has high left skewness. Also there is significantly higher mean percentage of older homes in high crime areas.
 
 ```{r}
 with(crime_train, c(summary(age), SD=sd(age), Skew=skewness(age), Kurt=kurtosis(age)))
@@ -204,7 +204,7 @@ box_target <- ggplot(crime_train, aes(x=factor(target), age)) + geom_boxplot(fil
 grid.arrange(hist, qq_plot, box_plot, box_target, ncol=2)
 ```
 
-7.	Response Variable: dis - weighted mean of distances to five Boston employment centers. The predictor dist describes the average distance to Boston employment centers. The variable is moderately right skewed. Also we can see that low crime areas are associated with higher average distances to employment centers.
+7. dis - weighted mean of distances to five Boston employment centers. The predictor dist describes the average distance to Boston employment centers. The variable is moderately right skewed. Also we can see that low crime areas are associated with higher average distances to employment centers.
 
 ```{r}
 with(crime_train, c(summary(dis), SD=sd(dis), Skew=skewness(dis), Kurt=kurtosis(dis)))
@@ -226,7 +226,7 @@ box_target <- ggplot(crime_train, aes(x=factor(target), dis)) + geom_boxplot(fil
 grid.arrange(hist, qq_plot, box_plot, box_target, ncol=2)
 ```
 
-8.	Response Variable: rad - index of accessibility to radial highways. The rad variable is an integer-valued index measure indicating an area’s accessibility to radial highways. In the boxplots below, there appears to be a significant positive association between high crime rates and rad value.
+8. rad - index of accessibility to radial highways. The rad variable is an integer-valued index measure indicating an area’s accessibility to radial highways. In the boxplots below, there appears to be a significant positive association between high crime rates and rad value.
 
 ```{r}
 with(crime_train, c(summary(rad), SD=sd(rad), Skew=skewness(rad), Kurt=kurtosis(rad)))
@@ -248,7 +248,7 @@ box_target <- ggplot(crime_train, aes(x=factor(target), rad)) + geom_boxplot(fil
 grid.arrange(hist, qq_plot, box_plot, box_target, ncol=2)
 ```
 
-9.	Response Variable: tax - full-value property-tax rate per $10,000. The tax variable refers to the the tax rate per $10k of property value. High crime areas also appear to have a strong, positive association with the tax value. This variable is densely distributed around two of the following approximate values: 300 and 700.
+9. tax - full-value property-tax rate per $10,000. The tax variable refers to the the tax rate per $10k of property value. High crime areas also appear to have a strong, positive association with the tax value. This variable is densely distributed around two of the following approximate values: 300 and 700.
 
 ```{r}
 with(crime_train, c(summary(tax), SD=sd(tax), Skew=skewness(tax), Kurt=kurtosis(tax)))
@@ -270,7 +270,7 @@ box_target <- ggplot(crime_train, aes(x=factor(target), tax)) + geom_boxplot(fil
 grid.arrange(hist, qq_plot, box_plot, box_target, ncol=2)
 ```
 
-10.	Response Variable: ptratio - ptratio: pupil-teacher ratio by town. The predictor ptratio indicates the average school, pupil-to-student ratio, and has a left skewed distribution. We can see a positive relationship between ptratio and high crime.
+10. ptratio - ptratio: pupil-teacher ratio by town. The predictor ptratio indicates the average school, pupil-to-student ratio, and has a left skewed distribution. We can see a positive relationship between ptratio and high crime.
 
 ```{r}
 with(crime_train, c(summary(ptratio), SD=sd(ptratio), Skew=skewness(ptratio), Kurt=kurtosis(ptratio)))
@@ -292,7 +292,7 @@ box_target <- ggplot(crime_train, aes(x=factor(target), ptratio)) + geom_boxplot
 grid.arrange(hist, qq_plot, box_plot, box_target, ncol=2)
 ```
 
-11.	Response Variable: black - 1000 (Bk−0.63)2(Bk−0.63)2 where Bk is the proportion of blacks by town. This variable is heavily left skewed.
+11. black - 1000 (Bk−0.63)2(Bk−0.63)2 where Bk is the proportion of blacks by town. This variable is heavily left skewed.
 
 ```{r}
 with(crime_train, c(summary(black), SD=sd(black), Skew=skewness(black), Kurt=kurtosis(black)))
@@ -314,7 +314,7 @@ box_target <- ggplot(crime_train, aes(x=factor(target), black)) + geom_boxplot(f
 grid.arrange(hist, qq_plot, box_plot, box_target, ncol=2)
 ```
 
-12.	Response Variable: lstat - lower status of the population (percent). The variable lstat indicates the proportion of the population deemed to be of lower status. lstat is right skewed. High crime areas tend to have be associated with larger lstat values.
+12. lstat - lower status of the population (percent). The variable lstat indicates the proportion of the population deemed to be of lower status. lstat is right skewed. High crime areas tend to have be associated with larger lstat values.
 
 ```{r}
 with(crime_train, c(summary(lstat), SD=sd(lstat), Skew=skewness(lstat), Kurt=kurtosis(lstat)))
@@ -336,7 +336,7 @@ box_target <- ggplot(crime_train, aes(x=factor(target), lstat)) + geom_boxplot(f
 grid.arrange(hist, qq_plot, box_plot, box_target, ncol=2)
 ```
 
-13.	Response Variable: medv - median value of owner-occupied homes in $1000s. The median value of residential homes in a given area. The variable is slightly right skewed, and high values of medv appear to be associated with lower crime rates. 
+13. medv - median value of owner-occupied homes in $1000s. The median value of residential homes in a given area. The variable is slightly right skewed, and high values of medv appear to be associated with lower crime rates. 
 
 ```{r}
 with(crime_train, c(summary(medv), SD=sd(medv), Skew=skewness(medv), Kurt=kurtosis(medv)))
